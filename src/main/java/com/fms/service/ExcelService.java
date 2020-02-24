@@ -46,9 +46,10 @@ public class ExcelService {
 	
 	@Autowired
 	private RoleRepository userRoleRepository;
-	
+	/*
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	*/
 	
 	@Autowired
 	private VolunteerAttendedRepo volunteerAttendedRepo;
@@ -314,15 +315,23 @@ System.out.println("inside save summery = ");
 				for (String id : pocIds) {
 					//resultList.add(new EventSummaryEntity(es.getEventId(), id, names[index]));
 					index++;
+				/*
 					userList.add(new UserRole(id + "@cognizant.com", id, passwordEncoder.encode(id), true, true, true,
+							true, Roles.ROLE_POC));
+							*/
+					userList.add(new UserRole(id + "@cognizant.com", id,id, true, true, true,
 							true, Roles.ROLE_POC));
 				}
 
 			} else {
 				// for non multiple pocId
 			//	resultList.add(new EventSummaryEntity(es.getEventId(), es.getPocId(), es.getPocName()));
+				/*
 				userList.add(new UserRole(es.getPoc_Id() + "@cognizant.com", es.getPoc_Id(),
 						passwordEncoder.encode(es.getPoc_Id()), true, true, true, true, Roles.ROLE_POC));
+						*/
+				userList.add(new UserRole(es.getPoc_Id() + "@cognizant.com", es.getPoc_Id(),
+						es.getPoc_Id(), true, true, true, true, Roles.ROLE_POC));
 			}
 
 		});

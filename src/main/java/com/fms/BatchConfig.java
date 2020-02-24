@@ -40,12 +40,15 @@ public class BatchConfig
                 .start(step1())
                 .build();
     }
+    
+    
  
     @Bean
     public Step step1() {
         return stepBuilderFactory.get("step1").<ExcelFileList, ExcelFileList>chunk(5)
+        		.reader(new Reader())
         		.processor(processor())               
-              //  .writer(writer)
+                .writer(new Writer())
                 .build();
     }
     
